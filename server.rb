@@ -34,6 +34,12 @@ get '/account/?' do
   if session['user_id'] == nil
     erb :'users/createaccount'
   else
+    @user = User.find(session['user_id'])
     erb :'users/myaccount'
   end
+end
+
+get '/logout' do
+  session['user_id'] = nil
+  redirect '/'
 end

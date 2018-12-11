@@ -1,1 +1,5 @@
-<a href="/join">Become a Cheezeit!</a>
+<% if session['user_id'] == nil %>
+  <a href="/join">Become a Cheezeit!</a>
+<% else %>
+  <a href="/logout">Logout</a>
+<% end %>

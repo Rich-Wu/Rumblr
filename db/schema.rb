@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_12_11_204301) do
 
   create_table "posts", force: :cascade do |t|
+    t.integer "author_id"
     t.string "title"
     t.text "content"
     t.string "hashtags"

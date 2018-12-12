@@ -28,8 +28,11 @@ input[type=submit] {
   background-color: #dbbb2b!important;
 }
 
+.logo {
+}
+
 .form {
-  margin: auto;
+  margin: 1.5em auto;
   padding: 1rem 2rem;
   background-color: #ceb455;
   border-radius: 15px;
@@ -38,6 +41,21 @@ input[type=submit] {
   max-width: 500px;
 }
 
+nav {
+  max-height: 11vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: slategray;
+  margin-bottom: 1.5em;
+  padding: .1em .1em;
+}
+
 .centertext {
   text-align: center;
+}
+
+footer {
+  margin-top: 1.5em;
+  background-color: slategray;
+  padding: 1em 2em;
 }

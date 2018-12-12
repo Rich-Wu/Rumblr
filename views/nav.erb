@@ -1,5 +1,12 @@
-<% if session['user_id'] == nil %>
-  <a href="/join">Become a Cheezeit!</a>
-<% else %>
-  <a href="/logout">Logout</a>
-<% end %>
+<nav>
+  <img src="img/logo.png" class="logo">
+  <div class="usernav">
+  <% if session['user_id'] == nil %>
+    <a href="/join">Become a Cheezeit!</a>
+    <a href="/login">I already have an Account</a>
+  <% else %>
+    <a href="/account"></a>
+    <a href="/logout">Logout</a>
+  <% end %>
+  </div>
+</nav>

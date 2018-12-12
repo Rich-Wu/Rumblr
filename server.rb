@@ -19,6 +19,20 @@ get '/join' do
     erb :'users/createaccount'
 end
 
+get '/login' do
+  erb :'users/login'
+end
+
+post '/login' do
+  @user = User.find_by(email: params[:email])
+  if @user.password == params[:password]
+    session['user_id'] = @user.id
+    redirect '/'
+  else
+    redirect '/login'
+  end
+end
+
 post '/join' do
   @user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
   @user.save
@@ -27,12 +41,8 @@ post '/join' do
 end
 
 get '/account/?' do
-  if session['user_id'] == nil
-    erb :'users/createaccount'
-  else
-    @user = User.find(session['user_id'])
-    erb :'users/myaccount'
-  end
+  @user = User.find(session['user_id'])
+  erb :'users/myaccount'
 end
 
 get '/logout' do

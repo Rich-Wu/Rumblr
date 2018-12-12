@@ -1,3 +1,43 @@
-:root {
-  background-color: red;
+@font-face {
+  font-family: "MeltdownMF";
+  src: url("fonts/MeltdownMF.ttf");
+}
+
+@font-face {
+    font-family: "Nunito";
+    src: url('fonts/Nunito-Regular.ttf');
+}
+
+body {
+  background-color: orange;
+}
+
+h1 {
+  font-family: "MeltdownMF";
+}
+
+p {
+  font-family: "Nunito";
+}
+
+input {
+  background-color: white!important;
+}
+
+input[type=submit] {
+  background-color: #dbbb2b!important;
+}
+
+.form {
+  margin: auto;
+  padding: 1rem 2rem;
+  background-color: #ceb455;
+  border-radius: 15px;
+  box-shadow: 0 0 15px black;
+  min-width: 40%;
+  max-width: 500px;
+}
+
+.centertext {
+  text-align: center;
 }

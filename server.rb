@@ -16,11 +16,7 @@ get '/' do
 end
 
 get '/join' do
-  if session['user_id'] != nil
-    redirect '/account'
-  else
     erb :'users/createaccount'
-  end
 end
 
 post '/join' do

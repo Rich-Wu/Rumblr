@@ -1,18 +1,18 @@
-<h1>Create an Account</h1>
-<form action="/join" method="post">
-  Email<br>
-  <input type="text" name="email" required><br>
-  First Name<br>
-  <input type="text" name="first_name" required><br>
-  Last Name<br>
-  <input type="text" name="last_name" required><br>
-  Password<br>
-  <input type="password" name="password" required><br>
-  Confirm Password<br>
-  <input type="password" name="password_confirm" required><br>
-  Birthdate<br>
-  <input type="date" name="birthdate" required><br>
-  <p>
-    <input type="submit" name="Submit" value="Join!">
-  </p>
-</form>
+<div class="form container">
+  <h1 class="centertext">Create an Account</h1>
+  <form action="/join" method="post">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" placeholder="This will be your Username" required><br>
+    <label for="firstName">First Name</label>
+    <input type="text" name="first_name" id="firstName" placeholder="Required*" required><br>
+    <label for="lastName">Last Name</label>
+    <input type="text" name="last_name" id="lastName" placeholder="Required*" required><br>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" placeholder="Must be at least 8 characters" required><br>
+    <label for="passwordConfirm">Confirm Password</label>
+    <input type="password" name="password_confirm" id="passwordConfirm" placeholder="Enter your password again" required><br>
+    <label for="birthdate">Birthdate</label>
+    <input type="date" name="birthdate" id="birthdate" required><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>

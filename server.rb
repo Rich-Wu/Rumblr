@@ -12,6 +12,9 @@ class Post < ActiveRecord::Base
 end
 
 get '/' do
+  if session['user_id'] != nil
+    @posts = Post.where(user_id: session['user_id']).order(created_at: :desc)
+  end
   erb :index
 end
 

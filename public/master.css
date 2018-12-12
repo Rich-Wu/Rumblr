@@ -29,6 +29,10 @@ input[type=submit] {
 }
 
 .logo {
+  width: auto;
+  max-height: 18vh;
+  margin-top: .6em;
+  margin-left: .8em;
 }
 
 .form {
@@ -42,12 +46,22 @@ input[type=submit] {
 }
 
 nav {
-  max-height: 11vh;
+  height: 11vh;
   display: flex;
   justify-content: space-between;
   background-color: slategray;
   margin-bottom: 1.5em;
-  padding: .1em .1em;
+  padding: .2em 1em;
+}
+
+.usernav {
+  display: flex;
+  align-items: center;
+}
+
+.usernav>a {
+  margin: 0!important;
+  margin-right: 1em!important;
 }
 
 .centertext {

@@ -1,5 +1,11 @@
 <div class="container medium">
-  <h1 class="centertext">Ooey Gooey Goodness Gracious</h1>
-  <p>Welcome to Grilled Cheezy, where we share our love of all things grilled cheese.</p>
-  <p>Get started here by creating an account with us and expand your horizons (regarding grilled cheese)!</p>
+  <% if session['user_id'] == nil %>
+    <h1 class="centertext">Ooey Gooey Goodness Gracious</h1>
+    <p>Welcome to Grilled Cheezy, where we share our love of all things grilled cheese.</p>
+    <p>Get started here by creating an account with us and expand your horizons (regarding grilled cheese)!</p>
+    <div style="display: flex; justify-content: center;">
+      <a href="/join" class="btn">Create an Account now</a>
+    </div>
+  <% else %>
+  <% end %>
 </div>

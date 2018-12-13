@@ -27,7 +27,7 @@ get '/join' do
 end
 
 post '/join' do
-  @user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
+  @user = User.new(email: params[:email], username: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
   @user.save
   session['user_id'] = @user.id
   redirect '/account'
@@ -60,7 +60,6 @@ get '/posts/?' do
 end
 
 post '/posts' do
-  puts params
   @post = Post.new(user_id: session['user_id'], title: params[:title], content: params[:content])
   @post.save
   redirect '/posts'

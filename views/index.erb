@@ -12,9 +12,12 @@
       <p class="centertext">There are no posts!</p>
     <% else %>
       <% @posts.each do |post| %>
-        <h2><%= post.title %></h2>
+      <div class="post">
+        <h2 class="postTitle"><%= post.title %></h2>
         <p><%= post.content %></p>
         <p><%= post.created_at %></p>
+        <p class="postInfo">By <%= User.find(post.user_id).email %></p>
+      </div>
       <% end %>
     <% end %>
     <div style="display: flex; justify-content: center;">

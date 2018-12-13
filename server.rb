@@ -3,11 +3,10 @@ require 'sinatra/activerecord'
 
 enable :sessions
 
-
-if ENV['RACK_ENV'] == 'development'
-  set :database, {adapter: "sqlite3", database: "database.sqlite3"}
-else
+if ENV['RACK_ENV']
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
+else
+  set :database, {adapter: "sqlite3", database: "database.sqlite3"}
 end
 
 class User < ActiveRecord::Base
@@ -77,7 +76,11 @@ end
 
 patch '/account/?' do
 # update profile information/settings
-  @user = User.find(session['user_id'])
+  user = User.find(session['user_id'])
+  user.username = params[:username]
+  user.first_name = params[:first_name]
+  user.last_name = params[:last_name]
+  user.password = params[:password]
   erb :'users/myaccount'
 end
 

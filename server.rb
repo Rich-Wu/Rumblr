@@ -86,15 +86,24 @@ end
 post '/account' do
 # update profile information/settings
   @user = User.find(session['user_id'])
-  if params['password'] == @user.password
-    @user.username = params[:username]
-    @user.first_name = params[:first_name]
-    @user.last_name = params[:last_name]
-    @user.password = params[:new_password]
-    @user.save
-    @success = true
-  else
-    @error = "Incorrect Password"
+  if params[:password] != ""
+    if params[:password] == @user.password
+      @user.username = params[:username]
+      @user.first_name = params[:first_name]
+      @user.last_name = params[:last_name]
+      @user.save
+      if params[:new_password] != ""
+        if params[:new_password].length>=8
+          @user.password = params[:new_password]
+          @user.save
+          @success = true
+        else
+          @error = "New password is invalid"
+        end
+      end
+    else
+      @error = "Incorrect Password"
+    end
   end
   erb :'users/myaccount'
 end

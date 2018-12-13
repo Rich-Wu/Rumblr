@@ -16,7 +16,7 @@
         <h2 class="postTitle"><%= post.title %></h2>
         <p><%= post.content %></p>
         <p><%= post.created_at %></p>
-        <p class="postInfo">By <%= User.find(post.user_id).email %></p>
+        <p class="postInfo">By <%= User.find(post.user_id).username %></p>
       </div>
       <% end %>
     <% end %>

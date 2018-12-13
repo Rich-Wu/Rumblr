@@ -1,7 +1,9 @@
 <div class="form container">
   <h1 class="centertext">Create an Account</h1>
   <% if @error != nil %>
-  <h5 style="color:red;" class="centertext"><%= @error %></h5>
+  <h5 style="color: red;" class="centertext"><%= @error %></h5>
+  <% elsif @success != nil %>
+  <h5 style="color: green;" class="centertext"><%= @success %></h5>
   <% end %>
   <form action="/join" method="post">
     <label for="email">Email</label>

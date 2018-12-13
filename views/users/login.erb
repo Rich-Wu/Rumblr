@@ -1,5 +1,8 @@
 <div class="form container">
   <h1 class="centertext">Login to your Account</h1>
+  <% if @error != nil %>
+  <h5 style="color: red;" class="centertext"><%= @error %></h5>
+  <% end %>
   <form action="/login" method="post">
     <input type="text" name="email" id="email" placeholder="Email" required>
     <input type="password" name="password" id="password" placeholder="Password" required>

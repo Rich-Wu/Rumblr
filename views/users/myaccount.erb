@@ -2,8 +2,9 @@
   <h1 class="centertext">Account Preferences</h1>
   <% if @error != nil %>
   <h5 style="color: red;" class="centertext"><%= @error %></h5>
-  <% elsif @success %>
-  <h5 style="color: green;" class="centertext">Information Updated</h5>
+  <% end %>
+  <% if @success != nil %>
+  <h5 style="color: green;" class="centertext"><%= @success %></h5>
   <% end %>
   <form action="/account" method="post">
     <label for="email">Email</label>

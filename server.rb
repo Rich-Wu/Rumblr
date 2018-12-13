@@ -33,10 +33,10 @@ end
 post '/join' do
   if params[:password].length >= 8
     if params[:password] == params[:password_confirm]
-      @user = User.new(email: params[:email], username: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
+      @user = User.new(email: params[:email], username: params[:email], first_name: params[:first_name].capitalize, last_name: params[:last_name].capitalize, password: params[:password], birthdate: params[:birthdate])
       @user.save
       session['user_id'] = @user.id
-      redirect '/account'
+      redirect '/'
     else
       @error = "Passwords must match"
     end
@@ -57,10 +57,12 @@ post '/login' do
       session['user_id'] = @user.id
       redirect '/'
     else
-      redirect '/login'
+      @error = "Invalid Password"
     end
+  else
+    @error = "User email not found"
   end
-  redirect '/login'
+  erb :'users/login'
 end
 
 get '/posts/?' do
@@ -89,14 +91,15 @@ post '/account' do
   if params[:password] != ""
     if params[:password] == @user.password
       @user.username = params[:username]
-      @user.first_name = params[:first_name]
-      @user.last_name = params[:last_name]
+      @user.first_name = params[:first_name].capitalize
+      @user.last_name = params[:last_name].capitalize
       @user.save
+      @success = "Changes made successfully"
       if params[:new_password] != ""
         if params[:new_password].length>=8
           @user.password = params[:new_password]
           @user.save
-          @success = true
+          @success = "Changes made successfully"
         else
           @error = "New password is invalid"
         end

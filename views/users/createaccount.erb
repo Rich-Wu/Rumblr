@@ -1,5 +1,8 @@
 <div class="form container">
   <h1 class="centertext">Create an Account</h1>
+  <% if @error != nil %>
+  <h5 style="color:red;" class="centertext"><%= @error %></h5>
+  <% end %>
   <form action="/join" method="post">
     <label for="email">Email</label>
     <input type="text" name="email" id="email" placeholder="By Default, this is your Username" required><br>

@@ -1,20 +1,23 @@
 <div class="form container">
   <h1 class="centertext">Account Preferences</h1>
-  <form action="/account" method="patch">
+  <% if @error != nil %>
+  <h5 style="color: red;" class="centertext"><%= @error %></h5>
+  <% elsif @success %>
+  <h5 style="color: green;" class="centertext">Information Updated</h5>
+  <% end %>
+  <form action="/account" method="post">
     <label for="email">Email</label>
     <p><%= @user.email %></p>
     <label for="username">Username</label>
-    <input type="text" name="username" id="username" placeholder="<%= @user.username %>">
+    <input type="text" name="username" id="username" value="<%= @user.username %>">
     <label for="firstName">First Name</label>
-    <input type="text" name="first_name" id="firstName" placeholder="<%= @user.first_name %>" required>
+    <input type="text" name="first_name" id="firstName" value="<%= @user.first_name %>">
     <label for="lastName">Last Name</label>
-    <input type="text" name="last_name" id="lastName" placeholder="<%= @user.last_name %>" required>
+    <input type="text" name="last_name" id="lastName" value="<%= @user.last_name %>">
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="Must be at least 8 characters" required>
-    <label for="passwordConfirm">Confirm Password</label>
-    <input type="password" name="password_confirm" id="passwordConfirm" placeholder="Enter your password again" required>
+    <input type="password" name="password" id="password" placeholder="Enter your password to confirm any changes" required>
     <label for="birthdate">Birthdate</label>
     <p><%= @user.birthdate %></p>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Apply">
   </form>
 </div>

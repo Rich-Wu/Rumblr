@@ -31,10 +31,19 @@ get '/join' do
 end
 
 post '/join' do
-  @user = User.new(email: params[:email], username: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
-  @user.save
-  session['user_id'] = @user.id
-  redirect '/account'
+  if params[:password].length >= 8
+    if params[:password] == params[:password_confirm]
+      @user = User.new(email: params[:email], username: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
+      @user.save
+      session['user_id'] = @user.id
+      redirect '/account'
+    else
+      @error = "Passwords must match"
+    end
+  else
+    @error = "Password is too short"
+  end
+  erb :'users/createaccount'
 end
 
 get '/login' do
@@ -74,13 +83,19 @@ get '/account/?' do
   erb :'users/myaccount'
 end
 
-patch '/account/?' do
+post '/account' do
 # update profile information/settings
-  user = User.find(session['user_id'])
-  user.username = params[:username]
-  user.first_name = params[:first_name]
-  user.last_name = params[:last_name]
-  user.password = params[:password]
+  @user = User.find(session['user_id'])
+  if params['password'] == @user.password
+    @user.username = params[:username]
+    @user.first_name = params[:first_name]
+    @user.last_name = params[:last_name]
+    @user.password = params[:password]
+    @user.save
+    @success = true
+  else
+    @error = "Incorrect Password"
+  end
   erb :'users/myaccount'
 end
 

@@ -8,6 +8,15 @@
     </div>
   <% else %>
     <h1 class="centertext">Post 'Em</h1>
-    <%= @posts %>
+    <% if @posts.count == 0 %>
+      <p class="centertext">There are no posts!</p>
+    <% else %>
+      <% @posts.each do |post| %>
+
+      <% end %>
+    <% end %>
+    <div style="display: flex; justify-content: center;">
+      <a href="/post" class="btn">What do you know about Cheez?</a>
+    </div>
   <% end %>
 </div>

@@ -59,7 +59,7 @@ nav {
   align-items: center;
 }
 
-.usernav>a {
+nav a {
   margin: 0!important;
   margin-right: 1em!important;
 }

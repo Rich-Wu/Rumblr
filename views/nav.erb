@@ -1,6 +1,9 @@
 <nav>
   <a href="/"><img src="img/logo.png" class="logo"></a>
   <div class="usernav">
+    <a href="/post" class="btn">Create a new Post</a>
+  </div>
+  <div class="usernav">
   <% if session['user_id'] == nil %>
     <a href="/join" class="btn">Become a Cheezeit!</a>
     <a href="/login" class="btn">Log In</a>

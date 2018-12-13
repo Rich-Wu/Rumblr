@@ -16,6 +16,8 @@
     <input type="text" name="last_name" id="lastName" value="<%= @user.last_name %>">
     <label for="password">Password</label>
     <input type="password" name="password" id="password" placeholder="Enter your password to confirm any changes" required>
+    <input type="button" value="Change Password" onclick="showChangePassword()" id="passwordBtn">
+    <input type="password" name="new_password" id="changePassword" placeholder="This will change your password" style="display:none;">
     <label for="birthdate">Birthdate</label>
     <p><%= @user.birthdate %></p>
     <input type="submit" value="Apply">

@@ -24,6 +24,10 @@ input {
   background-color: white!important;
 }
 
+input[type=button] {
+  background-color: #dbbb2b!important;
+}
+
 input[type=submit] {
   background-color: #dbbb2b!important;
 }

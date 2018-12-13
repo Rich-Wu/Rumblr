@@ -90,7 +90,7 @@ post '/account' do
     @user.username = params[:username]
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
-    @user.password = params[:password]
+    @user.password = params[:new_password]
     @user.save
     @success = true
   else

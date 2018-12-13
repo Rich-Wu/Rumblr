@@ -26,6 +26,13 @@ get '/join' do
   end
 end
 
+post '/join' do
+  @user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
+  @user.save
+  session['user_id'] = @user.id
+  redirect '/account'
+end
+
 get '/login' do
   erb :'users/login'
 end
@@ -43,16 +50,21 @@ post '/login' do
   redirect '/login'
 end
 
-post '/join' do
-  @user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birthdate: params[:birthdate])
-  @user.save
-  session['user_id'] = @user.id
-  redirect '/account'
+get '/posts/?' do
+  if session['user_id'] == nil
+    redirect '/login'
+  else
+    erb :'posts/posts'
+  end
 end
 
 get '/account/?' do
   @user = User.find(session['user_id'])
   erb :'users/myaccount'
+end
+
+patch '/account/?' do
+# update profile information/settings
 end
 
 get '/logout' do

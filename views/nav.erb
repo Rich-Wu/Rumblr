@@ -1,15 +1,17 @@
 <nav>
-  <a href="/"><img src="img/logo.png" class="logo"></a>
-  <div class="usernav">
-    <a href="/post" class="btn">Create a new Post</a>
+  <div class="nav-left">
+    <a href="/"><img src="img/logo.png" class="logo"></a>
   </div>
-  <div class="usernav">
+  <div class="nav-center">
+    <a href="/posts" class="btn">Create a new Post</a>
+  </div>
+  <div class="nav-right">
   <% if session['user_id'] == nil %>
     <a href="/join" class="btn">Become a Cheezeit!</a>
-    <a href="/login" class="btn">Log In</a>
+    <a href="/login" class="btn last">Log In</a>
   <% else %>
     <a href="/account" class="btn">My Account</a>
-    <a href="/logout" class="btn">Logout</a>
+    <a href="/logout" class="btn last">Logout</a>
   <% end %>
   </div>
 </nav>

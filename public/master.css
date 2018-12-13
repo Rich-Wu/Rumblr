@@ -47,21 +47,30 @@ input[type=submit] {
 
 nav {
   height: 11vh;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   background-color: slategray;
   margin-bottom: 1.5em;
-  padding: .2em 1em;
+  padding: 0 1em;
 }
 
-.usernav {
+.nav-left, .nav-center, .nav-right {
+  height: 11vh;
   display: flex;
+}
+
+.nav-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-right {
+  justify-content: flex-end;
   align-items: center;
 }
 
 nav a {
   margin: 0!important;
-  margin-right: 1em!important;
 }
 
 .centertext {
@@ -72,4 +81,8 @@ footer {
   margin-top: 1.5em;
   background-color: slategray;
   padding: 1em 2em;
+}
+
+.last {
+  margin-left: 1em!important;
 }

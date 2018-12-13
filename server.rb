@@ -13,7 +13,7 @@ end
 
 get '/' do
   if session['user_id'] != nil
-    @posts = Post.where(user_id: session['user_id']).order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc)
   end
   erb :index
 end
@@ -54,8 +54,16 @@ get '/posts/?' do
   if session['user_id'] == nil
     redirect '/login'
   else
+    @posts = Post.where(user_id: session['user_id']).order(created_at: :desc)
     erb :'posts/posts'
   end
+end
+
+post '/posts' do
+  puts params
+  @post = Post.new(user_id: session['user_id'], title: params[:title], content: params[:content])
+  @post.save
+  redirect '/posts'
 end
 
 get '/account/?' do

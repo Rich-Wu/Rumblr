@@ -72,6 +72,8 @@ end
 
 patch '/account/?' do
 # update profile information/settings
+  @user = User.find(session['user_id'])
+  erb :'users/myaccount'
 end
 
 get '/logout' do

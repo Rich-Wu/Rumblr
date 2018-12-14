@@ -1,8 +1,19 @@
 <div class = "container small">
   <% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <p><%= post.content %></p>
-  <p><%= post.created_at %></p>
-  <p>By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
+  <div class="card-top">
+    <h2><%= post.title %></h2>
+    <p>By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
+  </div>
+  <div class="card-middle">
+    <p><%= post.content %></p>
+  </div>
+  <div class="card-bottom">
+    <p><%= post.created_at %></p>
+    <i class="icon" style="
+    <% if post.user_id != session['user_id'] %>
+    visibility: hidden;
+    <% end %>
+    ">Actions</i>
+  </div>
   <% end %>
 </div>

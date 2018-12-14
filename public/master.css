@@ -90,3 +90,34 @@ footer {
 .last {
   margin-left: 1em!important;
 }
+
+.card-top {
+  background-color: #5d3019;
+  color: orange;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  padding: .5em .7em .5em .7em;
+}
+
+.card-middle {
+  background-color: orange;
+  color: #5d3019;
+  border-radius: 7px;
+  border: 2px solid;
+  padding: 1em 1.5em;
+}
+
+.card-bottom {
+  background-color: #5d3019;
+  color: orange;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 1em 1.5em;
+}
+
+h2,h3,h4,h5,h6,p {
+  margin-bottom: 0;
+}

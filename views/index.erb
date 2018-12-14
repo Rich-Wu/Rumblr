@@ -3,7 +3,7 @@
     <h1 class="centertext">Ooey Gooey Goodness Gracious</h1>
     <p>Welcome to Grilled Cheezy, where we share our love of all things grilled cheese.</p>
     <p>Get started here by creating an account with us and expand your horizons (regarding grilled cheese)!</p>
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center; margin-top: 1em;">
       <a href="/join" class="btn">Create an Account now</a>
     </div>
   <% else %>
@@ -12,11 +12,20 @@
       <p class="centertext">There are no posts!</p>
     <% else %>
       <% @posts.each do |post| %>
-      <div class="post">
-        <h2 class="postTitle"><%= post.title %></h2>
+      <div class="card-top">
+        <h2><%= post.title %></h2>
+        <p>By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
+      </div>
+      <div class="card-middle">
         <p><%= post.content %></p>
+      </div>
+      <div class="card-bottom">
         <p><%= post.created_at %></p>
-        <p class="postInfo">By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
+        <i class="icon" style="
+        <% if post.user_id != session['user_id'] %>
+        visibility: hidden;
+        <% end %>
+        ">Actions</i>
       </div>
       <% end %>
     <% end %>

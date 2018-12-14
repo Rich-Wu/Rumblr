@@ -16,12 +16,9 @@
         <h2 class="postTitle"><%= post.title %></h2>
         <p><%= post.content %></p>
         <p><%= post.created_at %></p>
-        <p class="postInfo">By <%= User.find(post.user_id).username %></p>
+        <p class="postInfo">By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
       </div>
       <% end %>
     <% end %>
-    <div style="display: flex; justify-content: center;">
-      <a href="/posts" class="btn">What do you know about Cheez?</a>
-    </div>
   <% end %>
 </div>

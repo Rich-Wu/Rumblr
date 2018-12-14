@@ -19,7 +19,11 @@ end
 
 get '/' do
   if session['user_id'] != nil
-    @posts = Post.all.order(created_at: :desc)
+    if params[:offset] == nil
+      @posts = Post.all.order(created_at: :desc).limit(20)
+    else
+      @posts = Post.all.order(created_at: :desc).limit(20).offset(params[:offset])
+    end
   end
   erb :index
 end
@@ -67,16 +71,26 @@ post '/login' do
   erb :'users/login'
 end
 
-get '/posts' do
+get '/post' do
+  erb :'/post'
+end
+
+get '/posts/:id' do
   if session['user_id'] == nil
     redirect '/login'
   else
-    @posts = Post.where(user_id: session['user_id']).order(created_at: :desc)
+    @posts = Post.where(user_id: params['id']).order(created_at: :desc).limit(20).to_a
     erb :'posts/posts'
   end
 end
 
-get '/posts/:user' do
+get '/posts' do
+  if session['user_id'] == nil
+    redirect '/login'
+  else
+    @posts = Post.where(user_id: session['user_id']).order(created_at: :desc).limit(20).to_a
+    erb :'posts/posts'
+  end
 end
 
 post '/posts' do

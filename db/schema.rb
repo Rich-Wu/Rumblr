@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_204301) do
     t.string "hashtags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

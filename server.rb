@@ -10,9 +10,11 @@ else
 end
 
 class User < ActiveRecord::Base
+  has_many :posts, dependent: :destroy
 end
 
 class Post < ActiveRecord::Base
+  belongs_to :user
 end
 
 get '/' do
@@ -65,13 +67,16 @@ post '/login' do
   erb :'users/login'
 end
 
-get '/posts/?' do
+get '/posts' do
   if session['user_id'] == nil
     redirect '/login'
   else
     @posts = Post.where(user_id: session['user_id']).order(created_at: :desc)
     erb :'posts/posts'
   end
+end
+
+get '/posts/:user' do
 end
 
 post '/posts' do

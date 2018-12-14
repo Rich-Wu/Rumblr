@@ -7,7 +7,7 @@
       <a href="/join" class="btn">Create an Account now</a>
     </div>
   <% else %>
-    <h1 class="centertext">Post 'Em</h1>
+    <h1 class="centertext">Welcome, <%= User.find(session['user_id']).first_name %></h1>
     <% if @posts.count == 0 %>
       <p class="centertext">There are no posts!</p>
     <% else %>

@@ -17,6 +17,12 @@ class Post < ActiveRecord::Base
   belongs_to :user
 end
 
+before ['/posts','/posts/:id','/account/?','/post'] do
+  if session['user_id'] == nil
+    redirect '/'
+  end
+end
+
 get '/' do
   if session['user_id'] != nil
     if params[:offset] == nil
@@ -76,21 +82,13 @@ get '/post' do
 end
 
 get '/posts/:id' do
-  if session['user_id'] == nil
-    redirect '/login'
-  else
-    @posts = Post.where(user_id: params['id']).order(created_at: :desc).limit(20).to_a
-    erb :'posts/posts'
-  end
+  @posts = Post.where(user_id: params['id']).order(created_at: :desc).limit(20).to_a
+  erb :'posts/posts'
 end
 
 get '/posts' do
-  if session['user_id'] == nil
-    redirect '/login'
-  else
-    @posts = Post.where(user_id: session['user_id']).order(created_at: :desc).limit(20).to_a
-    erb :'posts/posts'
-  end
+  @posts = Post.where(user_id: session['user_id']).order(created_at: :desc).limit(20).to_a
+  erb :'posts/posts'
 end
 
 post '/posts' do
@@ -100,9 +98,6 @@ post '/posts' do
 end
 
 get '/account/?' do
-  if session['user_id'] == nil
-    redirect '/'
-  end
   @user = User.find(session['user_id'])
   erb :'users/myaccount'
 end

@@ -1,9 +1,12 @@
 <nav>
   <div class="nav-left">
-    <a href="/"><img src="img/logo.png" class="logo"></a>
+    <a href="/"><img src="/img/logo.png" class="logo"></a>
   </div>
   <div class="nav-center">
-    <a href="/post" class="btn">Create a new Post</a>
+    <% if session['user_id'] != nil %>
+    <a href="/posts" class="btn">My Posts</a>
+    <a href="/post" class="btn last" style=>Create a new Post</a>
+    <% end %>
   </div>
   <div class="nav-right">
   <% if session['user_id'] == nil %>

@@ -1,4 +1,4 @@
-<div class="container small">
+<div class="container medium">
   <% if session['user_id'] == nil %>
     <h1 class="centertext">Ooey Gooey Goodness Gracious</h1>
     <p>Welcome to Grilled Cheezy, where we share our love of all things grilled cheese.</p>
@@ -10,13 +10,13 @@
       <a href="/join" class="btn">Create an Account now</a>
     </div>
   <% else %>
-    <h1 class="centertext">Welcome, <%= User.find(session['user_id']).first_name %></h1>
+    <h1 class="centertext">All Posts</h1>
     <% if @posts.count == 0 %>
       <p class="centertext">There are no posts!</p>
     <% else %>
       <% @posts.each do |post| %>
       <div class="card-top">
-        <h2><%= post.title %></h2>
+        <h3><%= post.title %></h3>
         <p>By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
       </div>
       <div class="card-middle">

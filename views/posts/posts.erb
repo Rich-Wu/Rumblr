@@ -1,22 +1,32 @@
-<div class = "container small">
-  <% @posts.each do |post| %>
-  <div class="card-top">
-    <h2><%= post.title %></h2>
-    <p>By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
-  </div>
-  <div class="card-middle">
-    <p><%= post.content %></p>
-  </div>
-  <div class="card-bottom">
-    <p><%= post.created_at %></p>
-    <div style="
-    <% if post.user_id != session['user_id'] %>
-    visibility: hidden;
+<div class = "container medium">
+  <h1 class="centertext">
+    <% if @posts[0].user_id == session["user_id"] %>
+    Your Posts</h1>
+    <% else %>
+    <%= "#{User.find(@posts[0].user_id).username}'s " %>Posts</h1>
     <% end %>
-    ">
-      <a href='/post/update/<%= post.id %>'>Edit</a>
-      <a href='/post/delete/<%= post.id %>'>Delete</a>
+    <% if @posts.count == 0 %>
+    <h3 class="centertext">This user has no posts!</h3>
+    <% else %>
+    <% @posts.each do |post| %>
+    <div class="card-top">
+      <h3><%= post.title %></h3>
+      <p>By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
     </div>
-  </div>
+    <div class="card-middle">
+      <p><%= post.content %></p>
+    </div>
+    <div class="card-bottom">
+      <p><%= post.created_at %></p>
+      <div style="
+      <% if post.user_id != session['user_id'] %>
+      visibility: hidden;
+      <% end %>
+      ">
+        <a href='/post/update/<%= post.id %>'>Edit</a>
+        <a href='/post/delete/<%= post.id %>'>Delete</a>
+      </div>
+    </div>
+    <% end %>
   <% end %>
 </div>

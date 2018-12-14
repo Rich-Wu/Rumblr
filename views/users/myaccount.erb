@@ -16,16 +16,17 @@
     <label for="lastName">Last Name</label>
     <input type="text" name="last_name" id="lastName" value="<%= @user.last_name %>">
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="Enter your password to confirm any changes">
+    <input type="password" name="password" id="password" placeholder="Enter your password to confirm any changes" required>
     <input type="button" value="Change Password" onclick="showChangePassword()" id="passwordBtn">
     <input type="password" name="new_password" id="changePassword" placeholder="This will change your password" style="display:none;">
     <label for="birthdate">Birthdate</label>
     <p class="spaceafter"><%= @user.birthdate %></p>
-    <input type="submit" value="Apply">
+    <input type="submit" value="Apply" id="applyBtn">
+    <input type="reset" value="Reset" id="resetBtn">
     <input type="button" value="DELETE ACCOUNT" onclick="toggleDelete()" id="deleteAcc" style="background-color: red!important; color: white;">
   </form>
   <form style="display: none;" action="/deleteacc" method="post" id="deleteForm">
-    <input type="text" name="deleteAcc" placeholder="Enter password here to delete your account">
+    <input type="password" name="deleteAcc" placeholder="Enter password here to delete your account">
     <input type="submit" style="background-color: red!important" value="DELETE">
   </form>
 </div>

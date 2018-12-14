@@ -1,17 +1,16 @@
 <div class = "container medium">
-  <h1 class="centertext">
+  <% if @posts.count > 0 %>
     <% if @posts[0].user_id == session["user_id"] %>
-    Your Posts</h1>
+    <h1 class="centertext">Your Posts</h1>
     <% else %>
-    <%= "#{User.find(@posts[0].user_id).username}'s " %>Posts</h1>
+    <h1 class="centertext"><%= "#{User.find(@posts[0].user_id).username}'s " %>Posts</h1>
     <% end %>
-    <% if @posts.count == 0 %>
-    <h3 class="centertext">This user has no posts!</h3>
-    <% else %>
     <% @posts.each do |post| %>
     <div class="card-top">
       <h3><%= post.title %></h3>
-      <p>By <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></p>
+      <p>By
+      <a href="/posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a>
+      </p>
     </div>
     <div class="card-middle">
       <p><%= post.content %></p>
@@ -28,5 +27,7 @@
       </div>
     </div>
     <% end %>
+  <% elsif @posts.count == 0 %>
+    <h3 class="centertext">No posts here!</h3>
   <% end %>
 </div>

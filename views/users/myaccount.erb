@@ -8,7 +8,7 @@
   <% end %>
   <form action="/account" method="post">
     <label for="email">Email</label>
-    <p><%= @user.email %></p>
+    <p class="spaceafter"><%= @user.email %></p>
     <label for="username">Username</label>
     <input type="text" name="username" id="username" value="<%= @user.username %>">
     <label for="firstName">First Name</label>
@@ -20,7 +20,7 @@
     <input type="button" value="Change Password" onclick="showChangePassword()" id="passwordBtn">
     <input type="password" name="new_password" id="changePassword" placeholder="This will change your password" style="display:none;">
     <label for="birthdate">Birthdate</label>
-    <p><%= @user.birthdate %></p>
+    <p class="spaceafter"><%= @user.birthdate %></p>
     <input type="submit" value="Apply">
     <input type="button" value="DELETE ACCOUNT" onclick="toggleDelete()" id="deleteAcc" style="background-color: red!important; color: white;">
   </form>

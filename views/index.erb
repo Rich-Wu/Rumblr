@@ -3,6 +3,9 @@
     <h1 class="centertext">Ooey Gooey Goodness Gracious</h1>
     <p>Welcome to Grilled Cheezy, where we share our love of all things grilled cheese.</p>
     <p>Get started here by creating an account with us and expand your horizons (regarding grilled cheese)!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
     <div style="display: flex; justify-content: center; margin-top: 1em;">
       <a href="/join" class="btn">Create an Account now</a>
     </div>
@@ -21,11 +24,13 @@
       </div>
       <div class="card-bottom">
         <p><%= post.created_at %></p>
-        <i class="icon" style="
+        <div style="
         <% if post.user_id != session['user_id'] %>
         visibility: hidden;
         <% end %>
-        ">Actions</i>
+        ">
+          <a href='/posts'>View My Posts</a>
+        </div>
       </div>
       <% end %>
     <% end %>

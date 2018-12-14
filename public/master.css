@@ -121,3 +121,7 @@ footer {
 h2,h3,h4,h5,h6,p {
   margin-bottom: 0;
 }
+
+.spaceafter {
+  padding-bottom: .5em;
+}

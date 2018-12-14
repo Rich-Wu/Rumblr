@@ -9,11 +9,14 @@
   </div>
   <div class="card-bottom">
     <p><%= post.created_at %></p>
-    <i class="icon" style="
+    <div style="
     <% if post.user_id != session['user_id'] %>
     visibility: hidden;
     <% end %>
-    ">Actions</i>
+    ">
+      <a href='/post/update/<%= post.id %>'>Edit</a>
+      <a href='/post/delete/<%= post.id %>'>Delete</a>
+    </div>
   </div>
   <% end %>
 </div>

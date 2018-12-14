@@ -1,0 +1,8 @@
+<div class="form container">
+  <h1 class="centertext">Edit Your Post</h1>
+  <form action="/post/update/<%= @post.id %>" method="post">
+    <input type="text" name="title" id="title" value="<%= @post.title %>" required>
+    <textarea name="content" cols="3" id="content" style="background-color: white; font-family: 'Nunito';" required><%= @post.content %></textarea>
+    <input type="submit" value="Submit">
+  </form>
+</div>

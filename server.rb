@@ -77,6 +77,35 @@ post '/login' do
   erb :'users/login'
 end
 
+get '/post/delete/:id' do
+  @post = Post.find(params[:id])
+  if session['user_id'] == @post.user_id
+    @post.delete
+  end
+  redirect '/posts'
+end
+
+get '/post/update/:id' do
+  @post = Post.find(params[:id])
+  if session['user_id'] == @post.user_id
+    erb :'posts/update'
+  else
+    redirect '/posts'
+  end
+end
+
+post '/post/update/:id' do
+  @post = Post.find(params[:id])
+  if session['user_id'] == @post.user_id
+    @post.title = params['title']
+    @post.content = params['content']
+    @post.save
+    redirect '/posts'
+  else
+    redirect '/posts'
+  end
+end
+
 get '/post' do
   erb :'/post'
 end

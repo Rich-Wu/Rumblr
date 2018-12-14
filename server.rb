@@ -81,6 +81,9 @@ post '/posts' do
 end
 
 get '/account/?' do
+  if session['user_id'] == nil
+    redirect '/'
+  end
   @user = User.find(session['user_id'])
   erb :'users/myaccount'
 end
@@ -114,4 +117,19 @@ end
 get '/logout' do
   session['user_id'] = nil
   redirect '/'
+end
+
+post '/deleteacc' do
+  @user = User.find(session['user_id'])
+  if @user != nil
+    if params[:deleteAcc] == @user.password
+      @user.destroy
+      @user.save
+      session['user_id'] = nil
+      redirect '/'
+    else
+      @error = "Incorrect Password Entered. Account still Extant"
+      erb :'users/myaccount'
+    end
+  end
 end

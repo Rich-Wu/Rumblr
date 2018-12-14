@@ -22,5 +22,10 @@
     <label for="birthdate">Birthdate</label>
     <p><%= @user.birthdate %></p>
     <input type="submit" value="Apply">
+    <input type="button" value="DELETE ACCOUNT" onclick="toggleDelete()" id="deleteAcc" style="background-color: red!important; color: white;">
+  </form>
+  <form style="display: none;" action="/deleteacc" method="post" id="deleteForm">
+    <input type="text" name="deleteAcc" placeholder="Enter password here to delete your account">
+    <input type="submit" style="background-color: red!important" value="DELETE">
   </form>
 </div>
